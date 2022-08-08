@@ -1,0 +1,30 @@
+<nav class="navbar navbar-light bg-dark ">
+  <a class="navbar-brand  " href="#" style="color:rgb(85, 98, 237);"><b>REMINDER</b></a>
+  <span class="quote text-light">Make Life Easy</span>
+</nav>
+
+<button class="btn btn-primary" style="float:left; margin-left: 20px; margin-top: 1%;" (click)="back()">Back</button>
+
+
+<button class="btn btn-primary" style="float:right; margin-right: 20px; margin-top: 1%;" (click)="logout()">Log
+  Out</button>
+
+
+<div class="container row " style="margin: auto; margin-top:-4%;">
+  <div class="col-4"></div>
+  <div class="col-4" id="login">
+    <form action="" [formGroup]="deleteForm" (ngSubmit)="deleteAcc()">
+      <h4 style="text-align: center; color: white;">Confirm User ID</h4>
+      <div class="input-group form-group">
+
+        <input type="text" class="form-control" placeholder="Enter user ID" formControlName="uid" name="user_id">
+      </div>
+      <div *ngIf="this.deleteForm.get('uid')?.touched&&this.deleteForm.get('uid')?.errors">Invalid user ID</div>
+
+      <div class="mt-3">
+        <button type="submit" class="btn btn-danger w-100">Delete Account</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-4"></div>
+</div>

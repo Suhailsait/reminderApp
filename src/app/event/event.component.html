@@ -1,0 +1,43 @@
+<nav class="navbar navbar-light bg-dark ">
+    <a class="navbar-brand  " href="#" style="color:rgb(85, 98, 237);">REMINDER</a>
+    <span class="quote text-light">Make Life Easy</span>
+</nav>
+<button class="btn btn-primary" style="float:left; margin-left: 20px; margin-top: 1%;" (click)="back()">Back</button>
+
+<div style="text-align: center;">
+    <div *ngIf="!flag">
+        <h3>NO EVENTS</h3>
+    </div>
+    <div *ngIf="flag">
+        <h3>YOUR EVENTS</h3>
+        <div>
+            <br>
+            <form [formGroup]="chooseForm">
+                <label for="">Choose event date </label>&nbsp;&nbsp;&nbsp;
+                <input type="date" placeholder="Enter event date" formControlName="date" name="date"
+                    (change)="date()">
+
+            </form>
+
+        </div>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Event</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let event of event_array">
+                    <td>{{event.event_date}}</td>
+                    <td>{{event.event_desc}}</td>
+                    <td><button class="btn btn-primary" (click)="editEvent(event,event_array)">Edit</button>
+                    <td><button class="btn btn-primary"
+                            (click)="deleteEvent(event_array.indexOf(event))">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
